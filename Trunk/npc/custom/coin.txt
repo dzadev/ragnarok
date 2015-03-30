@@ -1,0 +1,50 @@
+yuno_in02,33,61,5	script	Death Coin	103,{
+// Variables
+set	@name$,"[Death Coin]";	//nombre NPC
+
+// Quest Script
+	mes @name$;
+	mes "Hola, ^5555FF" + strcharinfo(0) + "^000000";
+	mes "Hola Yo Te Puedo Dar Una Coint Muy Valiosa";
+	mes "Te Sirve Para Hacer Multiples Quest";
+	menu "Death Coin",QUEST1,"Cancelar",cance;
+	
+QUEST1:
+	next;
+	mes "Necesitas traerme estos items y te dare mi coin:";
+	mes "30 Deathword Card ";
+	mes "120 Steel ";
+	next;
+	if(countitem(4388)<30)goto falta;
+    if(countitem(999)<120)goto falta;
+	next;
+	mes "Tienes todo Toma Tu Coin";
+	next;
+	delitem 4388,30;
+	delitem 999,120;
+	getitem 22001,1; 
+	close;
+
+
+falta:
+	mes "Pero que lastima siento por ti, ";
+	mes "aun no tienes lo necesario ";
+	mes "vuelve cuando lo tengas por favor";
+	mes "Gracias ^5555FF" + strcharinfo(0) + "^000000";
+	close;
+
+cance:
+	next;
+	mes "Te aconsejo que hagas mi quest, ya que";
+	mes "mi item es demasiado bueno y provocarias";
+	mes "serios daños a tus oponentes y a los mob";
+	close;	
+	
+no_zeny:
+	mes "[Coupon]";
+	mes "No tienes suficiente zenys";
+close;
+
+
+	
+}

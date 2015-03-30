@@ -1,0 +1,32 @@
+//===== eAthena Script =======================================================================
+//= Script Que Contiene Skill para buffear
+//===== By: =================================================================================
+//= Luis Tapia (Conwaidd)
+//===== Current Version: ======================================================================
+//= 1.0.0
+//==========================================================================================
+
+prontera.gat,148,195,6	script	Alexa	811,{
+//Variables
+set @effect, 0; // 0 para desabilitar los effecto si da lag
+set @heal, 1; // 0 para que no cure
+
+sc_start 32,  240000, 10;  // Increase Agi
+sc_start 29,  300000, 10;  // Angelus
+sc_start 30, 240000, 10; // Blessing
+sc_start 35,  60000, 5; // Impositio Manus
+sc_start 40,  90000, 5; // Magnificat
+sc_start 41,  30000,  5; // Gloria  
+sc_start 115, 100000,  5; // Assumptio
+
+if(@effect == 1) skilleffect 29,0; // Increase Agi
+if(@effect == 1) skilleffect 33,0; // Angelus
+if(@effect == 1) skilleffect 34,0; // Blessing
+if(@effect == 1) skilleffect 66,0; // Impositio Manus
+if(@effect == 1) skilleffect 73,0; // Kyrie Eleison
+if(@effect == 1) skilleffect 74,0; // Magnificat
+if(@effect == 1) skilleffect 75,0; // Gloria
+if(@effect == 1) skilleffect 361,0; // Assumptio
+
+if(@heal == 1) percentheal 100,100;
+}

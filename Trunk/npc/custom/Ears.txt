@@ -1,0 +1,58 @@
+yuno_in02,35,53,8	script	Wings Ears	897,{
+// Variables
+set	@name$,"[Wings Ears]";	//nombre NPC
+
+// Quest Script
+	mes @name$;
+	mes "Hola, ^5555FF" + strcharinfo(0) + "^000000";
+	mes "Hola Cules Wings Ears, Deseas Crear";
+	menu "Evil Wings Ears",QUEST1,"Angel Wings Ears",QUEST2,"Cancelar",cance;
+	
+QUEST1:
+	next;
+	mes "Necesitas traerme estos items y te dare mis  fabulosas Evil Wings Ears Que Ofrecen Allstats + 3 :";
+	mes "2 Death Coin";
+	next;
+	if(countitem(22001)<2)goto falta;
+	next;
+	mes "Tienes todo, asi que te envio el item a tu inventario";
+	mes "que lo disfrutes... Adios...";
+	next;
+	delitem 22001,2;
+	getitem 20022,1; 
+	close;
+
+
+QUEST2:
+
+	next;
+	mes "Necesitas traerme estos items y te dare mis  fabulosas Angel Wings Ears Que Ofrecen Allstats + 3 :";
+	mes "2 Death Coin";
+	next;
+	if(countitem(22001)<2)goto falta;
+	next;
+	mes "Tienes todo, asi que te envio el item a tu inventario";
+	mes "que lo disfrutes... Adios...";
+	next;
+	delitem 22001,2;
+	getitem 20023,1; 
+	close;
+
+
+falta:
+	mes "Pero que lastima siento por ti, ";
+	mes "aun no tienes lo necesario ";
+	mes "vuelve cuando lo tengas por favor";
+	mes "Gracias ^5555FF" + strcharinfo(0) + "^000000";
+	close;
+
+cance:
+	next;
+	mes "Te aconsejo que hagas mi quest, ya que";
+	mes "mi item es demasiado bueno y provocarias";
+	mes "serios daños a tus oponentes y a los mob";
+	close;	
+
+
+	
+}

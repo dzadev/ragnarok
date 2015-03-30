@@ -1,0 +1,114 @@
+prontera.gat,152,193,4	script	Anunciador	952,{
+
+set .@nomA$,"[^6600CCAnunciador^000000]"; 
+set .@prixA,100000; 
+set .@temporisation,1;
+
+setarray .@color$[0],
+	"0x8282FF",
+	"6600CC",
+	"0xFF9900", 
+	"0x00FF00";
+
+setarray .filtre$[0],
+	"Fuck","tonto","mierda","Ass","idiot","noob",
+	"estupido","pendejo","idiota","stupid","joto",
+	"jota","perra","puto","puta","marica","maricon",
+	"gay","homo","culo","pwned","mmg","owned","cague","Piche",
+	"Pastel";
+
+	if ( gettimetick(2) - (.@temporisation * 30 ) < #Last_Announce )
+	{
+		mes .@nomA$;
+		mes "Debes esperar un poco para el siguiente anuncio.";
+		mes "Por favor vuelve mas tarde.";
+		close;
+	}
+	
+	mes .@nomA$;
+	mes "Hola " + strcharinfo(0) + ".";
+	mes "Soy un anunciador .";
+	mes "Que puedo hacer por ti??";
+	next;
+
+		switch( select ( "Escribir un anuncio:Reglas:Nada") )
+		{
+
+
+		case 1:
+
+			mes .@nomA$;
+			mes "Venga!";
+			mes "El anuncio te costara " + .@prixA + " zeny.";
+			mes "Quieres continuar?";
+			next;
+
+			if ( select ( "Si:No") -1 ) break ;
+
+			if(zeny < .@prixA)
+			{
+
+				mes .@nomA$;
+				mes "Lo siento pero ... No tienes suficiente dinero.";
+				close;
+
+			}
+
+		
+			do
+			{
+				set @annonce$,"";
+				mes .@nomA$;
+				mes "Escribe tu anuncio.";
+				input @annonce$;
+				next;
+				for ( set @i , 0 ; @i < getarraysize ( .filtre$ ) ; set @i , @i + 1 )
+ 					if( compare( @annonce$, .filtre$[ @i ] ) )
+ 					{
+						mes .@nomA$;
+						mes "Ohh! Palabras prohibidas !";
+ 						close;
+					}
+				mes .@nomA$;
+				mes "Aqui esta tu anuncio :";
+				mes @annonce$;
+				mes "Todo bien?";
+				next;
+
+			} while ( select ("Si:No, dejame repetirlo") - 1 );
+
+
+
+			mes .@nomA$;
+			mes "Elige un color :";
+			next;
+			set @color , select ( "Blue:Purpura:Orange:Green" ) - 1 ;
+
+			mes .@nomA$;
+			set Zeny, zeny - .@prixA;
+			announce strcharinfo(0) + ": " + @annonce$ , bc_all , .@color$[ @color ] ;
+
+			set #Last_Announce , gettimetick (2) ;
+			mes "Tu anuncio fue enviado.";
+			close;
+
+			
+		case 2:
+		mes .@nomA$;
+		mes "1. No uses palabrotas";
+		mes "2. Este NPC es para mensajes con importancia";
+		mes "3. Aclara tus mensajes:";
+		mes "'V>' para vender";
+		mes "'C>' para comprar";
+		mes "'T>' para tradear";
+		mes "4. No hagas falsas ofertas";
+		close;
+
+		case 3:
+		}
+		
+		mes .@nomA$;
+		mes "Come back any times";
+		close;
+	
+}

@@ -1,0 +1,38 @@
+new_1-2,97,29,5	script	Reglas	47,{
+	mes "[Reglas]";
+		mes "Hola!";
+	menu "Reglas",reglas1;
+	
+	reglas1:
+	next;
+	mes "Regla N°1 Por Favor No Estafar A Nadie";
+	mes "Regla N°2 No Perdirle Nada A Los Gm";
+	mes "Regla N°3 No Insultar A Los Gm";
+	mes "Regla N°4 No Robar Mvp En La Sala De Mvp";
+	next;
+	mes "Regla N°5 No Insultar 	En El Broadcast";
+	mes "Regla N°6 No Matar A Nadie Cuando Este En Areas De Lvl Esto Afecta La Exp Del User";
+	mes "Regla N°7 No Robar En Thanatos ";
+	mes "Regla N°8 No Insultar A Los Demas";
+	close;
+	
+	premio:
+	next;
+    OnPCLoginEvent:
+    set @Sexo$,"";
+     if(Sex==0) set @Sexo$,"";
+     If(#newcont >= 1) goto Nomsg;
+     set #newcont,#newcont + 1;
+    Announce "Nos Complace Anunciar la llegada de " + strcharinfo(0) + " a Nuestro Servidor,"+@Sexo$,16; 
+   getitem 501,10;
+   getitem 24012,1;
+   getitem 24013,1;
+   getitem 24014,1;
+  End;
+    Nomsg:
+   dispbottom "Bienvenido A Death Ro Ragnarok Online, No Te olvides de votar cada 12 Horas y Reportar Cualquier Bug!!";
+   close;
+}
+	
+
+	

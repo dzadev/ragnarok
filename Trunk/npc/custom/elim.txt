@@ -1,0 +1,13 @@
+prontera.gat,165,202,4	script	Borradora De Puntos	113,{
+mes "Hola, Yo Te Puedo Ayudar A Borrar Esos Puntos De Skill Que No Te  Dejan Renacer.";
+next;
+mes "Tonces Bienes A Quitarlo.";
+next;
+menu "Quitame puntos.",si,"Nada , gracias.",no;
+si:
+set SkillPoint,0;
+close;
+
+no:
+close;
+}

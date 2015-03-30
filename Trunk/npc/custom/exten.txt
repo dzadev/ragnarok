@@ -1,0 +1,28 @@
+prontera.gat,152,193,4	script	Warper Death Extencion Quest	712,{
+	mes "[Warper Death Extencion]";
+	next;
+	mes "Hola Yo Soy Te Llevare A Tu Dun";
+	callsub Onc2,"Thanatos Tower";
+			callsub Onc1,58,"Thanatos Tower F1","tha_t01",150,39,"tha_t01";
+			callsub Onc1,171,"Thanatos Tower F2","tha_t02",150,136,"tha_t02";
+			callsub Onc1,172,"Thanatos Tower F3","tha_t03",220,158,"tha_t03";
+			callsub Onc1,173,"Thanatos Tower F4","tha_t04",59,143,"tha_t04";
+    callsub Onc2,"Thor Volcano Dungeon";
+			callsub Onc1,59,"Thor Volcano Dungeon F1","thor_v01",21,228,"thor_v01";
+			callsub Onc1,182,"Thor Volcano Dungeon F2","thor_v02",75,205,"thor_v02";
+			callsub Onc1,183,"Thor Volcano Dungeon F3","thor_v03",35,262,"thor_v03";
+	callsub Onc2,"Odin Shrine";
+			callsub Onc1,47,"Odin Shrine F1","odin_tem01",98,146,"odin_tem01";
+			callsub Onc1,144,"Odin Shrine F2","odin_tem02",28,180,"odin_tem02";
+			callsub Onc1,145,"Odin Shrine F3","odin_tem03",120,54,"odin_tem03";
+	callsub Onc2,"Cursed Abbey Dungeon";
+			callsub Onc1,36,"Cursed Abbey Dungeon F1","abbey01",51,14,"abbey01";
+			callsub Onc1,104,"Cursed Abbey Dungeon F2","abbey02",150,11,"abbey02";
+			callsub Onc1,105,"Cursed Abbey Dungeon F3","abbey03",120,10,"abbey03";
+	callsub Onc2,"Holy Ground";
+			callsub Onc1,40,"Holy Ground F1","ra_san01",140,135,"ra_san01";
+			callsub Onc1,129,"Holy Ground F2","ra_san02",32,21,"ra_san02";
+			callsub Onc1,130,"Holy Ground F3","ra_san03",10,149,"ra_san03";
+			callsub Onc1,131,"Holy Ground F4","ra_san04",204,218,"ra_san04";
+			callsub Onc1,132,"Holy Ground F5","ra_san05",150,9,"ra_san05";
+}

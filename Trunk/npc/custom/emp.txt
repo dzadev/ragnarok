@@ -1,0 +1,182 @@
+//===== eAthena Script =========================================
+//= PK kill/death counter + leaderboard
+//===== Original De: ===========================================
+//= mrmagoo
+//===== Editado Por: ===========================================
+//= holybeske
+//===== Traducido: =============================================
+//= Vladd (staff DivineRO)
+//===== Versión: ===============================================
+//= 1.4 
+//===== Compatible con: ========================================
+//= eAthena SVN
+//===== Description: ===========================================
+// Cuenta tus muertes de mobs y las muertes de PvP. Se da 
+// experiencia al mejor de todos. También permite ver cuantas
+// muertes tienes comprobando tu status, asi como el Ranking.
+//===== Configuración ==========================================
+// Configurar el script_athena.conf de la siguiente manera en 
+// el caso de que no funcione o lo haga mal:
+//
+// event_script_type: 0
+// die_event_name: PCDieEvent
+// event_requires_trigger: no
+//==============================================================
+
+-	script	PCDieEvent	-1,{
+
+	// When killing a player you gain bonus EXP if you are the
+	// number one on the kill table. Based on a default of 300
+	// the top PKer would gain the following bexp and half the
+	// following jexp.
+	//
+	// 42900 exp, level 55 kills level 99
+	// 29700 exp, 99 v 99
+	// 16500 exp, 55 v 55
+	// 3300 exp, level 99 kills level 55
+
+	set $@PK_Reward,300;	// 0 = disable
+
+	// Mobs do not count as logged in
+	if (isloggedin(killerrid)==0) goto L_NoKill;
+
+	set PK_Deaths,PK_Deaths+1;
+	set $@victim_name$,strcharinfo(0);
+	set $@PK_VBase,BaseLevel;
+	callfunc "Roll_Losers";
+
+	attachrid(killerrid);
+	set PK_Kills,PK_Kills+1;
+
+	set $@PK_Bonus,BaseLevel*$@PK_Reward;
+	if ($@PK_VBase<BaseLevel) goto L_NoBully;
+	set $@PK_Bonus,$@PK_Bonus-(((BaseLevel-$@PK_VBase)*2)*$@PK_Reward);
+	goto L_NoExtra;
+L_NoBully:
+	if ($@PK_VBase==BaseLevel) goto L_NoExtra;
+	set $@PK_Bonus,$@PK_Bonus+((($@PK_VBase-BaseLevel)*2)*$@PK_Reward);
+L_NoExtra:
+
+	callfunc "Roll_Winners";
+
+	announce "El jugador : "+strcharinfo(0)+" ha matado a "+$@victim_name$+"!!",8;
+L_NoKill:
+	end;
+}
+
+prontera.gat,164,173,4	script	Ranking	857,{
+L_mainmenu:
+	mes "[ Ranking ]";
+	mes "Bienvenido al sistema de información PvP y Estatus. Elige una opción...";
+	next;
+	menu
+	"Ver El PvP Ranking",PK_Board,
+	"Ver mi Estatus",PK_Stats,
+	"Salir",-;
+	close;
+
+PK_Stats:
+	mes "[ ^0000ff"+strcharinfo(0)+"'s^000000 stats ]";
+	mes "Jugadores Muertos: ^ff0000"+PK_Kills+"^000000";
+	mes "Jugadores Que has matado: ^ff0000"+PK_Deaths+"^000000";
+	mes "Mobs Matados: ^ff0000"+(PC_DIE_COUNTER-PK_Deaths)+"^000000";
+ 	mes "Total de Muertes: ^ff0000"+PC_DIE_COUNTER+"^000000";
+	next;
+	goto L_mainmenu;
+
+PK_Board:
+	for (set @i, 0; @i < 10; set @i, @i + 1){
+		if ($PK_KRank$[@i]=="") set $PK_KRank$[@i],"Nadie";
+		if ($PK_LRank$[@i]=="") set $PK_LRank$[@i],"Nadie";
+	}
+
+L_BoardMenu:
+	menu
+	"Los Pro's",L_Killers,
+	"Los nOObs",L_Victims,
+	"Cancelar",-;
+	goto L_mainmenu;
+
+L_Killers:
+	mes "[ ^ff0000Top Pro^000000 ]";
+	for (set @i, 0; @i < 10; set @i, @i + 1){
+	mes "["+@i+"] - "+$PK_KRank$[@i]+" con "+$PK_nKRank[@i]+" muertos.";
+	}
+	next;
+	goto L_BoardMenu;
+
+L_Victims:
+	mes "[ ^ff0000Top nOOb^000000 ]";
+	for (set @i, 0; @i < 10; set @i, @i + 1){
+		mes "["+@i+"] - "+$PK_LRank$[@i]+" con "+$PK_nLRank[@i]+" muertes.";
+	}
+	next;
+	goto L_BoardMenu;
+
+PK_ClearBoard:
+	for (set @i, 0; @i < 10; set @i, @i + 1){
+		set $PK_KRank$[@i],"Nadie";
+		set $PK_nKRank[@i],0;
+		set $PK_LRank$[@i],"Nadie";
+		set $PK_nLRank[@i],0;
+	}
+	mes "Tablero Despejado";
+	next;
+	goto L_mainmenu;
+}
+
+function	script	Roll_Losers	{
+	if (PK_Deaths<$PK_nLRank[9]) goto outL;
+	for (set @i, 0; @i < 10; set @i, @i + 1){
+		if ($PK_LRank$[@i] == strcharinfo(0)){
+			set $PK_nLRank[@i],PK_Deaths;
+			goto sortL;
+		}
+	}
+	set $PK_nLRank[9] , PK_Deaths;
+	set $PK_LRank$[9] , strcharinfo(0);
+sortL:
+	for (set @i, 9; @i > 0; set @i, @i - 1){
+		if ($PK_nLRank[@i]>$PK_nLRank[@i-1]){
+			set $temp , $PK_nLRank[@i];
+			set $PK_nLRank[@i] , $PK_nLRank[(@i - 1)]; 
+			set $PK_nLRank[(@i - 1)]  , $temp;
+			set $temp$ , $PK_LRank$[@i];
+			set $PK_LRank$[@i] , $PK_LRank$[(@i - 1)]; 
+			set $PK_LRank$[(@i - 1)]  , $temp$;
+		}
+	}
+outL:
+	return;
+}
+
+function	script	Roll_Winners	{
+	if (PK_Kills<$PK_nKRank[9]) goto outK;
+	for (set @i, 0; @i < 10; set @i, @i + 1){
+		if ($PK_KRank$[@i] == strcharinfo(0)){
+			set $PK_nKRank[@i],PK_Kills;
+			if (@i == 0) goto expbonus;
+			goto sortK;
+		}
+	}
+	set $PK_nKRank[9] , PK_Kills;
+	set $PK_KRank$[9] , strcharinfo(0);
+sortK:
+	for (set @i, 9; @i > 0; set @i, @i - 1){
+		if ($PK_nKRank[@i]>$PK_nKRank[@i-1]){
+			set $temp , $PK_nKRank[@i];
+			set $PK_nKRank[@i] , $PK_nKRank[(@i - 1)]; 
+			set $PK_nKRank[(@i - 1)]  , $temp;
+			set $temp$ , $PK_KRank$[@i];
+			set $PK_KRank$[@i] , $PK_KRank$[(@i - 1)]; 
+			set $PK_KRank$[(@i - 1)]  , $temp$;
+		}
+	}
+outK:
+	return;
+expbonus:
+	set BaseExp,BaseExp+$@PK_Bonus;
+	set JobExp,JobExp+($@PK_Bonus/2);
+	dispbottom "Tu ganas "+$@PK_Bonus+" Bonus de EXP por matar a "+$@victim_name$+". Ahora estas en el Top Pro.";
+	goto sortK;
+}

@@ -1,0 +1,48 @@
+yuno_in02,54,61,4	script	Angel Wings	59,{
+// Variables
+set	@name$,"[Angel Wings]";	//nombre NPC
+
+// Quest Script
+	mes @name$;
+	mes "Hola, ^5555FF" + strcharinfo(0) + "^000000";
+	mes "Deseas Crear Las Angel Wings Sin Slot";
+	menu "Si",QUEST1,"No",cance;
+	
+QUEST1:
+	next;
+	mes "Necesitas traerme estos items y te dare mis  fabulosas Angel Wings Sin Slot:";
+	mes "200 Feather";
+	mes "100 Animal Skin";
+	mes "80 Fabric";
+	next;
+	if(countitem(949)<200)goto falta;
+	if(countitem(919)<100)goto falta;
+	if(countitem(1059)<80)goto falta;
+	next;
+	mes "Tienes todo, asi que te envio el item a tu inventario";
+	mes "que lo disfrutes... Adios...";
+	next;
+	delitem 949,200;
+	delitem 919,100;
+	delitem 1059,80;
+	getitem 24001,1; 
+	close;
+
+
+falta:
+	mes "Pero que lastima siento por ti, ";
+	mes "aun no tienes lo necesario ";
+	mes "vuelve cuando lo tengas por favor";
+	mes "Gracias ^5555FF" + strcharinfo(0) + "^000000";
+	close;
+
+cance:
+	next;
+	mes "Te aconsejo que hagas mi quest, ya que";
+	mes "mi item es demasiado bueno y provocarias";
+	mes "serios daños a tus oponentes y a los mob";
+	close;	
+	
+
+	
+}

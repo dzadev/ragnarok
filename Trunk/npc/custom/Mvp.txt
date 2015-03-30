@@ -1,0 +1,5 @@
+prontera.gat,140,225,6	script	Mvp Room	768,{
+	mes "[Mvp Room]";
+	mes "Hola Soy Lord Xeon Yo Te Puedo Llevar A La Sala De Mvp";
+	warp "pvp_n_1-5",99,100;
+}

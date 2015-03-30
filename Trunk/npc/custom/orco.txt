@@ -1,0 +1,64 @@
+//====================================================
+//====================================================
+// Cabeza de Orco
+//====================================================
+// Version 1
+//====================================================
+// Autor: Links234
+//====================================================
+// Descripción:
+//
+// - NPC que saca la cabeza de orco.
+//
+//====================================================
+//
+//====================================================
+// Licencia: GPL "http://www.gnu.org/licenses/gpl.txt"
+//====================================================
+
+prontera.gat,147,171,6	script	Cabeza de Orco	79,{
+	if (checkoption(0x800)==1) {
+
+		mes "[Dylan]";
+		mes "Hola " + strcharinfo(0) + " veo que tienes una cabeza de orco";
+		mes "A mi me paso eso hace tiempo. Pero por suerte fui a ver al jefe de la tribu de los orcos y me dijo la solución a ese problema";
+		next;
+
+		mes "[Dylan]";
+		mes "Quieres que te saque la cabeza de orco?";
+
+		menu "Sí, claro",-,"No, me veo sexy",LNo;
+		
+		next;
+		mes "[Dylan]";
+		mes "ok, dejame hacer lo que me enseñaron";
+		specialeffect2 14;
+		setoption 0x800,0;
+		next;
+
+		mes "[Dylan]";
+		mes "Bien!!!";
+		mes "Como nuevo. Nos Vemos.";
+		close;
+
+	} else {
+	
+		if (rand(1)==0) {
+		mes "[Dylan]";
+			mes "Hola viajero";
+			close;
+		} else {
+		mes "[Dylan]";
+			mes "Que disfrutes viaje!";
+			close;
+		}
+	}
+
+LNo:
+	next;
+	mes "[Dylan]";
+	mes "Ok, si te gusta...";
+	close;
+
+
+}

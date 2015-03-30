@@ -1,0 +1,12 @@
+yuno_in02,87,72,6	script	Salir2	105,{
+	mes "[Salir]";
+	mes "Hola Quieres Salir De La Sala?";
+	menu "Salir",go0,"Cancelar",cance;
+	go0:
+	next;
+	warp "prontera.gat",156,180;
+	cance:
+	next;
+	mes "AaAa Te Quieres Quedar Otro Rato Ok...";
+	close;		
+}

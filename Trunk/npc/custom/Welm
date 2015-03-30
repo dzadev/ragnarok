@@ -1,0 +1,9 @@
+-<TAB>script<TAB>bienvenida<TAB>-1,{
+OnPcLoginEvent:
+if (! #premio ){
+getitem 22002,5,240014,1;// las XXXXXXXX reemplazalas por el ID del item, y ZZ la cantidad
+dispbottom "Bienvenido A, Death Ro.";
+set #premio,1;
+}
+end;
+}

@@ -1,0 +1,54 @@
+//===== eAthena Script =======================================
+//= Heal Npc
+//===== By: ==================================================
+//= Lotsa People (1.x)
+//===== Current Version: =====================================
+//= 3.0
+//===== Compatible With: =====================================
+//= eAthena 0.1+;
+//===== Description: =========================================
+//= Healer NPC Which Heals For Free
+//===== Additional Comments: =================================
+//= 3.0 By massdriller, Changed and edited the script
+//= added other warp points of maps.
+//= 2.0 By Darkchild, Duplicates And Changed A Bit
+//= you can replace this script file by heal_payment.txt
+//= if you want that players have to pay their healings.
+//============================================================
+
+prontera.gat,150,184,5	script	Healer#h1-1::Healer	81,{
+
+		percentheal 100,100;
+}
+
+morocc.gat,159,96,5	duplicate(Healer)	Healer#h1-2	81
+ayothaya.gat,155,111,5	duplicate(Healer)	Healer#h1-3	81
+geffen.gat,123,68,5	duplicate(Healer)	Healer#h1-4	81
+umbala.gat,94,162,5	duplicate(Healer)	Healer#h1-5	81
+payon.gat,180,105,5	duplicate(Healer)	Healer#h1-6	81
+alberta.gat,185,144,5	duplicate(Healer)	Healer#h1-7	81
+aldebaran.gat,135,119,5	duplicate(Healer)	Healer#h1-8	81
+izlude.gat,125,113,5	duplicate(Healer)	Healer#h1-9	81
+xmas.gat,149,136,5	duplicate(Healer)	Healer#h1-10	81
+comodo.gat,188,162,5	duplicate(Healer)	Healer#h1-11	81
+amatsu.gat,200,80,5	duplicate(Healer)	Healer#h1-12	81
+gonryun.gat,164,130,5	duplicate(Healer)	Healer#h1-13	81
+yuno.gat,126,173,5	duplicate(Healer)	Healer#h1-14	81
+niflheim.gat,188,180,5	duplicate(Healer)	Healer#h1-15	81
+louyang.gat,211,107,5	duplicate(Healer)	Healer#h1-16	81
+
+
+
+
+/* Duplicados */
+
+payon.gat,144,208,5	duplicate(Healer)	Healer#h1-17	81
+rachel.gat,113,126,5	duplicate(Healer)	Healer#h1-18	81
+hugel.gat,102,145,5	duplicate(Healer)	Healer#h1-19	81
+
+
+
+
+
+
+

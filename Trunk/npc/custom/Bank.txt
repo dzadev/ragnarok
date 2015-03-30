@@ -1,0 +1,89 @@
+prt_in,28,73,4	script	Banquero	109,{
+	
+	mes "[Banquero]";
+	mes "Hola Soy El Encargado De Las Cuentas Bancarias De Death Bank";
+	next;
+	mes "Cual Es Tu Consulta?";
+	set @kb_int,(gettime(6)*31)+gettime(5); 
+ set @income,0;
+//calculate %
+ if (#kafrabank<=0 || #kb_int>=@kb_int) goto L_NoIncomeToday;
+ set @income,(#kafrabank/1000)*(@kb_int-#kb_int); //@income == % of the summ
+L_NoIncomeToday:
+ set #kb_int,@kb_int; 
+  
+ if(#kafrabank==0) mes "Nosotros Te Abriremos una cuenta bancaria En Death Bank.";
+ if(@income>0) mes "Today's income ^135445" + @income + "^0000000 zeny.";
+ set #kafrabank,#kafrabank+@income;
+ if(#kafrabank>0) mes "Tu cuenta: ^135445" + #kafrabank + "^0000000 zeny.";
+ mes "Que deseas hacer??";
+ next;
+ if(#kafrabank==0) menu "-Abrir una cuenta bancaria",-,"-Salir",B_EXIT2;
+ if(#kafrabank>0) menu "-Depositar Dinero",-,"-Sacar Dinero",M_WITHDRAW,"-Cancelar",B_EXIT2;
+
+ mes"[Banquero]";
+ mes "Por favor,Digame Cuanto Dinero Deseas Depositar.";
+ next;
+ input @kafrabank;
+  
+ if(@kafrabank<1000) goto L_LESS_1000;
+ if(@kafrabank>1000000000) goto L_TOO_BIG_AMOUNT;
+ if(@kafrabank+@kafrabank2>zeny) goto L_NOT_ENOUGH;
+ set zeny,zeny-@kafrabank;
+ set #kafrabank,#kafrabank+@kafrabank;
+ mes"[Banquero]";
+ mes "Has decidido depositar ^135445" + @kafrabank + "z^0000000.";
+ 
+ goto B_EXIT;
+
+M_WITHDRAW:  
+ if(#kafrabank==0) goto L_ZERO_ACCOUNT;
+ mes"[Banquero]";
+ mes "Tu Dinero: ^135445" + #kafrabank + "^0000000 zeny.";
+ mes "Cuanto Dinero deseas Sacar?";
+ next;
+ input @kafrabank;
+  
+ if(@kafrabank<1) goto B_EXIT2;
+ if(@kafrabank>1000000000) goto L_TOO_BIG_AMOUNT;
+ if(@kafrabank>#kafrabank) goto L_NOT_ENOUGH;
+ set #kafrabank,#kafrabank-@kafrabank;
+ set zeny,zeny+@kafrabank;
+ mes"[Banquero]";
+ mes "Has elejido sacar ^135445" + @kafrabank + "z^0000000, toma...";
+ goto B_EXIT;
+  
+L_NOT_ENOUGH:  
+ mes"[Banquero]";
+ mes "No tienes Saldo En Tu Cuenta Bancaria.";
+ next;
+ goto B_EXIT2;
+
+L_ZERO_ACCOUNT:  
+ mes"[Banquero]";
+ mes "No tienes Saldo En Tu Cuenta Bancaria!";
+ next;
+ goto B_EXIT2;
+
+L_TOO_BIG_AMOUNT:  
+ mes"[Banquero]";
+ mes "Perdona. Es Mucho Dinero zeny.";
+ next;
+ goto B_EXIT2;
+
+L_LESS_1000:  
+ mes"[Banquero]";
+ mes "Perdona, lo minimo que se puede depositar es  1,000 zeny.";
+ next;
+ goto B_EXIT2;
+  
+B_EXIT:
+ mes "...";
+ next;
+
+B_EXIT2:  
+ mes"[Banquero]";
+ mes "Vuelve cuando quieras.";
+ close;
+ 
+}

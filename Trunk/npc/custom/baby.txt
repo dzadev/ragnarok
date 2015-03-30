@@ -1,0 +1,275 @@
+
+prontera,147,165,6	script	Baby Job Master	112,{
+
+if (class == 0) goto makebaby;
+if (class == 4023) goto Go1st;
+if (class == 4024 || class == 4025 || class == 4026 || class == 4027 || class == 4028 || class == 4029) goto Go2nd;
+if (class >= 4030) goto ur2nd;
+mes "[ ^0065DFBaby Jobra^000000 ]";
+mes "Lo siento, no eres un Baby Novice o un Baby First Class, por favor usa el Job Changer normal.";
+close;
+
+ur2nd:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Qué quieres de mí? Ya eres Baby Second Class.";
+close;
+
+makebaby:
+if(joblevel>1) goto Lbabyjobone;
+if(baselevel>1) goto Lbabybaseone;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Yo soy el gran Baby Job Master! Quieres que te convierta en baby?";
+menu "Sí, claro!",Lyes,"No!",Lno;
+
+Lbabyjobone:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "No eres Level 1/1!";
+close;
+
+Lbabybaseone:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "No eres Level 1/1!";
+close;
+
+Lyes:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Ok allá va mi lindo Baby!";
+jobchange 4023;// Job: Baby_Novice
+close;
+
+Lno:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes " Ok vete hombre feo y grande! >.> ";
+close;
+
+Go1st:
+if(joblevel<10) goto Lbabyjobten;
+if(SkillPoint != 0) goto Lbabyskillpt;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Yo soy el gran Baby Job Master! Primero de todo, qué baby class quieres ser?";
+mes "Por favor elige tu first job...";
+next;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Escoge un job, cualquiera de éstos!";
+menu "Swordsman",LbabySword,"Mage",LbabyMage,"Thief",LbabyThief,"Merchant",LbabyMerc,"Acolyte",LbabyAco,"Archer",LbabyArch,"Super Novice",LbabySupNovi,"Cancel",LCancel;
+
+Lbabyjobten:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Ugh, necesitas ser al menos Job Level 10 antes de cambiar a tu primera clase... ve a matar algunos porings o algo.. >.>'";
+cutin "kafra_01",255;
+close;
+
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Por favor usa todos los skillpoints antes de cambiar de job! ";
+cutin "kafra_01",255;
+close;
+
+LbabySupNovi:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+if(baselevel<35) goto LReqnovi;
+mes "Tú no quieres ser una persona corriente? Entonces Super Novice es la elección correcta, pásalo bien!!!";
+cutin "kafra_01",255;
+jobchange 4045;// Job: Super_Novice
+close;
+LReqnovi:
+mes "Tienes que ser level 35,";
+mes "para ser Super Novice";
+close;
+
+
+LbabySword:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Wow, fantastico! No sientes que todo el trabajo duro ha sido pagado? *kekeke* Puedo ver la ^B70004SANGRE de porings^000000 en tus manos! Verdaderamente estas hecho para el trabajo de ^0005CESwordsman^000000! ";
+cutin "kafra_01",255;
+jobchange 4024;// Job: Job_BabySwordman
+close;
+
+LbabyMage:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Bien, ahora finalmente podrás obtener el poder de ^2200DFM^7600F9A^AF00FBN^DA00DFA^000000, tu energía espiritual!!!";
+cutin "kafra_01",255;
+jobchange 4025;// Job: Job_BabyMage
+close;
+
+LbabyThief:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Esas malignas manos tuyas realmente se ven con ganas de coger cosas (sin comentarios)..... ve y roba todo lo que puedas!!";
+cutin "kafra_01",255;
+jobchange 4029;// Job: Job_BabyThief
+close;
+
+LbabyMerc:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Oh sí, Mr. Sacos de Dinero, ALGUIEN aquí que ama el sonido que hacen las monedas dentro del monedero...";
+mes "Bueno, no soy yo!.. >_>..... ... bah.. ";
+cutin "kafra_01",255;
+jobchange 4028;// Job: Job_BabyMerchant
+close;
+
+LbabyAco:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Yay.. vete a leer una Biblia.. o lo que sea.. er..sí";
+cutin "kafra_01",255;
+jobchange 4027;// Job: Job_BabyAcolyte
+close;
+
+LbabyArch:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Yo solía tocar cosas de pequeñito de lejos con un palo, ehm,  sí, solía..";
+next;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Supongo que eres como yo! Te gusta tocar cosas con palos! Kekeke...";
+cutin "kafra_01",255;
+jobchange 4026;// Job: Job_BabyArcher
+close;
+
+
+Go2nd:
+if(SkillPoint != 0) goto Lbabyskillpt;
+if(joblevel<40) goto Lbabyjobforty;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Soy el súper Job Master! Primero de todo, en qué baby class quieres que te convierta?";
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Por favor elige tu second job...";
+next;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Qué te gustaría ser?";
+menu "Knight",LbabyKnight,"Wizard",LbabyWizard,"Hunter",LbabyHunter,"Blacksmith",LbabyBlacksmith,"Assassin",LbabyAssassin,"Priest",LbabyPriest,"Crusader",LbabyCrusader,"Sage",LbabySage,"Dancer/Bard",LbabyDancerbard,"Alchemist",LbabyAlchemist,"Rogue",LbabyRogue,"Monk",LbabyMonk,"Cancel",LCancel;
+
+Lbabyjobforty:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Tienes que ser al menos job level 40 para pensar siquiera en cambiarte de job.";
+cutin "kafra_01",255;
+close;
+
+
+LbabyHunter:
+if(class != 4026) goto wrong1stjob;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Oh buenazo, has alcanzado todos los requisitos... lo has pasado bien clavando palos puntiagudos a los monstruítos? Bueno, sabes qué?";
+next;
+mes "[ ^0065DFBaby Jobra^000000 ]";
+mes "Ahora puedes clavar palitos puntiagudos a los monstruos Y dejarlos quieros en un sitio! w00t, yeah! Las trampas son geniales...";
+jobchange 4034;// Job: Job_Hunter
+close;
+
+LbabyKnight:
+if(class != 4024) goto wrong1stjob;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "w00t w00t! Eres Job Level 40, has sido un Swordie toda tu vida...";
+mes "Muy bien, estás listo para convertirte en el símbolo de la justicia, el cuerpo del heroísmo, el alma y la vida del valor! ";
+mes "...";
+next;
+mes "[ ^0065DFBaby Jobra^000000 ]";
+mes "Sí! Estás listo para convertirte en... un Baby Knight! ";
+mes "Ve a salvar una damisela en apuros o algo...";
+cutin "kafra_01",255;
+jobchange 4030;// Job: Job_Knight
+close;
+
+LbabyBlacksmith:
+if(class != 4028) goto wrong1stjob;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Oooo~~h! Has alcanzado tooooooooooooodos los requisitos! Adivina qué voy a hacer ...";
+next;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "SIP! Lo adivinaste! Te transformé en un Blacksmith! No estás ORGULLOSO de ti?... Ve y fabrica algunas armas! Abre tiendas por toda la nación! Yea yea yea! Ve ve ve! w00t! Ho yeah! ";
+jobchange 4033;// Job: Job_Blacksmith
+close;
+
+LbabyAssassin:
+if(class != 4029) goto wrong1stjob;
+mes "[ ^0065DFBaby Jobra^000000 ]";
+mes "Sabías que yo solía ser un asesino hombre? Bueno, me hice unas cuentas cosas en el pelo, un lifting facial, algunos implantes aquí y allá...";
+next;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Oh dios, demasiada información, verdad? Kekeke, okay, ve y conviértete en el más siniestro de todos los jobs en este mundo... ^6500BFAssassin...";
+next;
+mes "[ ^0065DFBaby Jobra^000000 ]";
+mes "Poof! Kekeke... ";
+jobchange 4035;// Job: Job_Assassin
+close;
+
+LbabyPriest:
+if(class != 4027) goto wrong1stjob;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Apuesto a que estás CANSADÍSIMO de NO tener Sp Recovery, verdad? Bueno, estoy cansado de escuchar pequeños Acolytes Abrazaniñitosjesus gritarlo a cada rato cuando están bajos de SP... ";
+next;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Yay! Has alcanzado ser Priest! ";
+jobchange 4031;// Job: Job_Priest
+close;
+
+LbabyWizard:
+if(class != 4025) goto wrong1stjob;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Weeee, no se siente genial convertirse finalmente en Wizard? Es como un baño caliente.... ahhhhhhh......";
+jobchange 4032;// Job: Job_Wizard
+close;
+
+LbabyCrusader:
+if(class != 4024) goto wrong1stjob;
+mes "[ ^0065DFBaby Jobra^000000 ]";
+mes "Mmmmm, siempre me gustaron los Crusaders.. sus Broad Shoulders siempre me calentaron....";
+next;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Oooo~~~h sí, eso es... yummy...";
+jobchange 4037;// Job: Job_Crusader
+close;
+
+LbabyDancerbard:
+if(class != 4026) goto wrong1stjob;
+mes "[ ^0065DFBaby Jobra^000000 ]";
+if(sex==1) mes "Yay! Ve a tocar algunas baladas a algunas Dancers o algo, no puedo soportar tu ropa... ewww.";
+if(sex==1) jobchange 4042;// Job: Job_Bard
+if(sex==0) mes "Uh-huh, mueve esas caderas chica ^_~ Las Dancers son taaaaaan sexys.. qué mal que yo tenga esta horrible ropa.. blah, si sólo pudiera sacarme un poco de ropa de abajo también... *sigh*";
+if(sex==0) jobchange 4043;// Job: Job_Dancer
+close;
+
+LbabyAlchemist:
+if(class != 4028) goto wrong1stjob;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Yeah! Ve a hacer algunas pociones! Abre una farmacia! yeah yeah yeah! ";
+jobchange 4041;// Job: Job_Alchem
+close;
+
+LbabyRogue:
+if(class != 4029) goto wrong1stjob;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Wow! Tú.. eres.. TAAAN PROOOO!! KYAAHH XD!! *drools*";
+jobchange 4040;// Job: Job_Rogue
+close;
+
+LbabyMonk:
+if(class != 4027) goto wrong1stjob;
+mes "[ ^0065DFBaby Jobra^000000 ]";
+mes "Bien.... Los Monks son tan lindos!";
+jobchange 4038;// Job: Job_Monk
+close;
+
+LbabySage:
+if(class != 4025) goto wrong1stjob;
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Ahhhh, yeah! Nunca me cansaré de ver gente en estos nuevos sprites 2-2, o no tan nuevos .. KYAHH XD!!";
+mes "Vamos Sage! Enseñales a esos wizzies de lo que es capaz un verdadero poseedor de mana! Mwahaha...";
+jobchange 4039;// Job: Job_Sage
+close;
+
+wrong1stjob:
+mes "[ ^0065DFBaby Jobra^000000 ]";
+mes "Tienes el first job equivocado, así que por favor escoge otro second job.";
+close;
+
+Lbabyskillpt:
+mes "[ ^0065DFJobra^000000 ]";
+mes "Por favor usa todos tus skill points antes de cambiar de job! ";
+cutin "kafra_01",255;
+close;
+
+
+LCancel:
+mes "[ ^0065DFBaby Job Master^000000 ]";
+mes "Blah.. quédate como estás.. >_>..";
+cutin "kafra_01",255;
+close;
+} 

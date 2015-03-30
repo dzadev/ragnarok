@@ -1,0 +1,4 @@
+pvp_n_1-5,133,99,6	script	sala1	78,{
+	mes "[sala1]";
+	warp "guild_vs1-2",50,50;
+}

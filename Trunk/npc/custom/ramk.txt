@@ -1,0 +1,158 @@
+prontera.gat,147,159,5	script	PvP Warp	45,2,2,{
+end;
+OnTouch:
+	switch (rand(1,5)) {
+		case 1: // Izquierda
+			warp "guild_vs3",00,00;
+			break;
+			
+		case 2: // Abajo
+			warp "guild_vs3",00,00;
+			break;
+			
+		case 3: // Derecha
+			warp "guild_vs3",00,00;
+			break;
+			
+		case 4: // Arriba
+			warp "guild_vs3",00,00;
+			break;
+			
+		case 5: // Aleatorio
+			warp "guild_vs3",0,0;
+			break;
+	} // End switch
+end;
+
+
+} // End Script
+
+prontera,147,159,3	script	PvP Rank#PvP::PvPW	837,{
+mes "[^FF0000Rank PvP^000000]";
+mes "Top 1: ^0000FF" +$top1pvp$ +"^000000 muertes: ^FF0000" +$top1pvp +"^000000.";
+mes "Top 2: ^0000FF" +$top2pvp$ +"^000000 muertes: ^FF0000" +$top2pvp +"^000000.";
+mes "Top 3: ^0000FF" +$top3pvp$ +"^000000 muertes: ^FF0000" +$top3pvp +"^000000.";
+mes "Top 4: ^0000FF" +$top4pvp$ +"^000000 muertes: ^FF0000" +$top4pvp +"^000000.";
+mes "Top 5: ^0000FF" +$top5pvp$ +"^000000 muertes: ^FF0000" +$top5pvp +"^000000.";
+close;
+
+OnInit:
+	do {
+		delwaitingroom;
+		waitingroom "PvP Warp [" +getmapusers("guild_vs3") +" users]",0;
+	sleep 50; // Evites super infinity loop
+	} while(1); // End Loop
+end;
+} // End Script
+
+
+	-	script	PvPAnnounce	-1,{
+OnPCKillEvent:
+	getmapxy(.@mapa$,.@x,.@y,0);
+	if (.@mapa$ != "guild_vs3") end;
+	if (rid2name(killedrid) == strcharinfo(0)) {
+		mapannounce .@mapa$,"El jugador [" +strcharinfo(0) +"] se ha suicidado.",bc_blue;
+	} else {
+		mapannounce .@mapa$,"El jugador [" +strcharinfo(0) +"] ha asesinado a [" +rid2name(killedrid) +"]",bc_blue;
+		set Muertes, Muertes + 1;
+		callfunc ("PvPRank",Muertes,strcharinfo(0));
+	} // End if
+end;
+} // End Script
+
+guild_vs3	mapflag	nopenalty
+
+-	script	MapLoad	-1,{
+OnPCLoadMapEvent:
+	getmapxy (.@mapa$,.@x,.@y,0);
+	if (.@mapa$ != "guild_vs3") end;
+	dispbottom "[PvP Rank]: Has matado : " +Muertes +" en PvP.";
+end;
+} // End Script
+
+guild_vs3	mapflag	loadevent
+
+function	script	PvPRank	{
+set @mvptotal, getarg(0);
+set @nomb$, getarg(1);
+
+if (@mvptotal > $top1pvp) {
+	if ($top1pvp$ == strcharinfo(0)) { // Si estamos en top 1
+		// Simplemente seguimos contando
+		set $top1pvp, @mvptotal;
+		set $top1pvp$, @nomb$;
+	} else { // Si alcanzamos el top 1
+		// Almacenamos el antiguo top 1
+		set @aux, $top1pvp;
+		set @aux$, $top1pvp$;
+		// Nos asignamos al top 1
+		set $top1pvp, @mvptotal;
+		set $top1pvp$, @nomb$;
+		// El viejo top 1 ahora es top 2
+		set $top2pvp, @aux;
+		set $top2pvp$, @aux$;
+	} // End if
+} else if (@mvptotal > $top2pvp) {
+	if ($top2pvp$ == strcharinfo(0)) { // Si estamos en top 2
+		// Seguimos contando las muertes del top 2
+		set $top2pvp, @mvptotal;
+		set $nomb2, @nomb$;
+	} else { // Si alcanzamos el top 2
+		// Almacenamos el antiguo top 2
+		set @aux, $top2pvp;
+		set @aux$, $top2pvp$;
+		// Nos asignamos al top 2
+		set $top2pvp, @mvptotal;
+		set $top2pvp$, @nomb$;
+		// El viejo top 2 ahora es top 3
+		set $top3pvp, @aux;
+		set $top3pvp$, @aux$
+	} // End if
+} else if (@mvptotal > $top3pvp) {
+	if ($top3pvp$ == strcharinfo(0)) { // Si estamos en top 3
+		// Seguimos contando el top 3
+		set $top3pvp, @mvptotal;
+		set $top3pvp$, @nomb$;
+	} else { // Si alcanzamos el top 3
+		// Almacenamos el antiguo top 3
+		set @aux, $top3pvp;
+		set @aux$, $top3pvp$;
+		// Nos asignamos al top 3
+		set $top3pvp, @mvptotal;
+		set $top3pvp$, @nomb$;
+		// El viejo top 3 ahora es top 4
+		set $top4pvp, @aux;
+		set $top4pvp$, @aux$;
+	} // End if
+} else if (@mvptotal > $top4pvp) {
+	if ($top4pvp$ == strcharinfo(0)) { // Si estamos en top 4
+		// Seguimos contando el top 4
+		set $top4pvp, @mvptotal;
+		set $top4pvp$, @nomb$;
+	} else { // Si alcanzamos el top 4
+		// Almacenamos el antiguo top 4
+		set @aux, $top4pvp;
+		set @aux$, $top4pvp$;
+		// Nos asignamos al top 4
+		set $top4pvp, @mvptotal;
+		set $top4pvp$, @nomb$;
+		// El viejo top 4 es ahora top 5
+		set $top5pvp, @aux;
+		set $top5pvp$, @aux$;
+	} // End if
+} else if (@mvptotal > $top5pvp) {
+	if ($top5pvp$ == strcharinfo(0)) { // Si estamos en top 5
+		// Seguimos contando el top5
+		set $top5pvp, @mvptotal;
+		set $nomb5, @nomb$;
+	} else { // Si alcanzamos el top 5
+		// Directamente nos sobreescribimos en el top 5
+		set $top5pvp, @mvptotal;
+		set $top5pvp$, @nomb$;
+	} // End if
+} // End if
+return;
+} // End function
+
+guild_vs3	mapflag	pvp
+guild_vs3	mapflag	pvp_noguild

@@ -1,0 +1,619 @@
+guild_vs2-1.gat,49,7,4	script	Ayudante MvP	75,{
+mes "[Ayudante MvP]";
+mes "Hola yo puedo Invocar MVPs...";
+next;
+mes "Te puedo invocar por una moderada suma de Zenys, por cada monster.";
+mes "Elija una categoría: ";
+	next;
+menu "Convocar un MvP para mí",boss1,"Convocar un MiniBoss para mí",boss2,"Déjame Salir de Aquí",salirr;
+
+
+boss1:
+		menu "Osiris(300000z)",osi,"Doppelganger(600000z)",dop,"Mistress(500000z)",mis,"Golden Thief Bug(600000z)",gol,"Orc Hero(350000z)",orc,"Drake(350000z)",dra,"Eddga(300000z)",edd,"Garm(500000z)",gar,"Maya(400000z)",may,"Moonlight(300000z)",moo,"Pharaoh(200000z)",pha,"Phreeoni(550000z)",phr,"Stormy Knight(600000z)",sto,"Orc Lord(500000z)",lor,"Dark Lord(450000z)",dar,"Dark Snake Lord(200000z)",sna,"Turtle General(700000z)",tur,"Incantation Samurai(300000z)",inc,"Bacsojin(200000z)",bac1,"Dracula(400000z)",dracu,"Baphomet(800000z)",bap,"Tao Gunka(450000z)",tao,"RSX 0806(500000z)",rsx,"Detale(900000z)",det;
+
+boss2:
+	
+		menu "Angeling(200000z)",ange,"Arch-Angeling(100000z)",arch,"Bloody Knight(100000z)",bloo,"Chimera(100000z)",chim,"Dragon Fly(100000z)",drag,"Eclipse(100000z)",ecli,"Ghostring(400000z)",ghos,"Gian Whisper(100000z)",gian,"Grimir(100000z)",Grim;
+
+
+
+osi:
+        set @check,Zeny/300000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 300000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*300000;
+        monster "guild_vs2-1.gat",49,49,"Osiris",1038,1;  goto a;
+
+		
+a:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Osiris ",16;
+	close;
+}
+
+
+dop:
+        set @check,Zeny/600000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 600000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*600000;
+        monster "guild_vs2-1.gat",49,49,"Doppelganger",1046,1;  goto b;
+
+		
+b:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Doppelganger ",16;
+	close;
+}
+mis:
+        set @check,Zeny/500000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 500000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*500000;
+        monster "guild_vs2-1.gat",49,49,"Mistress",1059,1;  goto c;
+
+		
+c:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Mistress ",16;
+	close;
+}
+gol:
+        set @check,Zeny/600000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 600000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*600000;
+        monster "guild_vs2-1.gat",49,49,"Golden Thief Bug",1086,1;  goto d;
+
+		
+d:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Golden Thief Bug ",16;
+	close;
+}
+orc:
+        set @check,Zeny/350000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 350000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*350000;
+        monster "guild_vs2-1.gat",49,49,"Orc Hero",1087,1;  goto e;
+
+		
+e:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Orc Hero ",16;
+	close;
+}
+dra:
+        set @check,Zeny/350000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 350000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*350000;
+        monster "guild_vs2-1.gat",49,49,"Drake",1112,1;  goto f;
+
+		
+f:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Drake ",16;
+	close;
+}
+edd:
+        set @check,Zeny/300000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 300000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*300000;
+        monster "guild_vs2-1.gat",49,49,"Eddga",1115,1;  goto g;
+
+		
+g:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Eddga ",16;
+	close;
+}
+gar:
+        set @check,Zeny/500000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 500000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*500000;
+        monster "guild_vs2-1.gat",49,49,"Garm",1252,1;  goto h;
+
+		
+h:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Garm ",16;
+	close;
+}
+may:
+        set @check,Zeny/400000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 400000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*400000;
+        monster "guild_vs2-1.gat",49,49,"Maya",1147,1;  goto i;
+
+		
+i:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Maya ",16;
+	close;
+}
+moo:
+        set @check,Zeny/300000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 300000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*300000;
+        monster "guild_vs2-1.gat",49,49,"Moonlight",1150,1;  goto j;
+
+		
+j:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Moonlight ",16;
+	close;
+}
+pha:
+        set @check,Zeny/200000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 200000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*200000;
+        monster "guild_vs2-1.gat",49,49,"Pharaoh",1157,1;  goto k;
+
+		
+k:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Pharaoh ",16;
+	close;
+}
+phr:
+        set @check,Zeny/550000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 550000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*550000;
+        monster "guild_vs2-1.gat",49,49,"Phreeoni",1159,1;  goto l;
+
+		
+l:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Phreeoni ",16;
+	close;
+}
+sto:
+        set @check,Zeny/600000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 600000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*600000;
+        monster "guild_vs2-1.gat",49,49,"Stormy Knight",1251,1;  goto m;
+
+		
+m:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Stormy Knight ",16;
+	close;
+}
+lor:
+        set @check,Zeny/500000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 500000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*500000;
+        monster "guild_vs2-1.gat",49,49,"Orc Lord",1190,1;  goto n;
+
+		
+n:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Orc Lord ",16;
+	close;
+}
+dar:
+        set @check,Zeny/450000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 450000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*450000;
+        monster "guild_vs2-1.gat",49,49,"Dark Lord",1272,1;  goto o;
+
+		
+o:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Dark Lord ",16;
+	close;
+}
+sna:
+        set @check,Zeny/200000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 200000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*200000;
+        monster "guild_vs2-1.gat",49,49,"Dark Snake Lord",1418,1;  goto p;
+
+		
+p:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Dark Snake Lord ",16;
+	close;
+}
+tur:
+        set @check,Zeny/700000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 700000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*700000;
+        monster "guild_vs2-1.gat",49,49,"Turtle General",1312,1;  goto q;
+
+		
+q:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Turtle General ",16;
+	close;
+}
+inc:
+        set @check,Zeny/300000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 300000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*300000;
+        monster "guild_vs2-1.gat",49,49,"Incantation Samurai",1492,1;  goto r;
+
+		
+r:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Incantation Samurai ",16;
+	close;
+}
+bac1:
+        set @check,Zeny/200000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 200000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*200000;
+        monster "guild_vs2-1.gat",49,49,"Bacsojin",1518,1;  goto ssss;
+
+		
+ssss:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Bacsojin ",16;
+	close;
+}
+dracu:
+        set @check,Zeny/400000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 400000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*400000;
+        monster "guild_vs2-1.gat",49,49,"Dracula",1530,1;  goto t;
+
+		
+t:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Dracula ",16;
+	close;
+}
+bap:
+        set @check,Zeny/800000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 800000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*800000;
+        monster "guild_vs2-1.gat",49,49,"Baphomet",1039,1;  goto u;
+
+		
+u:	
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Baphomet ",16;
+	close;
+}
+tao:
+        set @check,Zeny/450000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 450000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*450000;
+        monster "guild_vs2-1.gat",49,49,"Tao Gunka",1583,1;  goto v;
+
+		
+v:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Tao Gunka ",16;
+	close;
+}
+rsx:
+        set @check,Zeny/500000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 500000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*500000;
+        monster "guild_vs2-1.gat",49,49,"RSX 0806",1623,1;  goto x;
+
+		
+x:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un RSX 0806 ",16;
+	close;
+}
+det:
+        set @check,Zeny/900000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 900000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*900000;
+        monster "guild_vs2-1.gat",49,49,"Detale",1719,1;  goto y;
+
+		
+y:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Detale ",16;
+	close;
+}
+
+ange:
+        set @check,Zeny/200000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 200000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*200000;
+        monster "guild_vs2-1.gat",49,49,"Angeling",1096,1;  goto aa;
+
+		
+aa:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Angeling ",16;
+	close;
+}
+arch:
+        set @check,Zeny/100000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 100000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*100000;
+        monster "guild_vs2-1.gat",49,49,"Arch-Angeling",1388,1;  goto bb;
+
+		
+bb:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Arch-Angeling ",16;
+	close;
+}
+bloo:
+        set @check,Zeny/100000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 100000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*100000;
+        monster "guild_vs2-1.gat",49,49,"Bloody Knight",1569,1;  goto cc;
+
+		
+cc:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Bloody Knight ",16;
+	close;
+}
+chim:
+        set @check,Zeny/100000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 100000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*100000;
+        monster "guild_vs2-1.gat",49,49,"Chimera",1283,1;  goto dd;
+
+		
+dd:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Chimera ",16;
+	close;
+}
+drag:
+        set @check,Zeny/100000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 100000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*100000;
+        monster "guild_vs2-1.gat",49,49,"Dragon Fly",1091,1;  goto ee;
+
+		
+ee:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Dragon Fly ",16;
+	close;
+}
+ecli:
+        set @check,Zeny/100000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 100000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*100000;
+        monster "guild_vs2-1.gat",49,49,"Eclipse",1093,1;  goto ff;
+
+		
+ff:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Eclipse ",16;
+	close;
+}
+ghos:
+        set @check,Zeny/400000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 400000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*400000;
+        monster "guild_vs2-1.gat",49,49,"Ghostring",1120,1;  goto gg;
+
+		
+gg:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Ghostring ",16;
+	close;
+}
+gian:
+        set @check,Zeny/100000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 100000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*100000;
+        monster "guild_vs2-1.gat",49,49,"Gian Whisper",1186,1;  goto hh;
+
+		
+hh:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Gian Whisper ",16;
+	close;
+}
+Grim:
+        set @check,Zeny/100000;
+        if (1 > @check) {
+            mes "Lo siento NO puedes invocar éste Monster, ya que tienes "+Zeny+" Zenys.";
+            close;
+        } else
+        if (Zeny >= 100000) {
+        //next;
+        mes "Bien... Monster Invocado";
+        set Zeny,Zeny-1*100000;
+        monster "guild_vs2-1.gat",49,49,"Grimir",2309,1;  goto ii;		
+ii:
+		
+	Announce "El Jugador " + strcharinfo(0) + " a Invocado un Grimir ",16;
+	close;	
+}
+salirr:	
+		warp "prontera.gat",	156,	184;	end;
+	
+
+}
+

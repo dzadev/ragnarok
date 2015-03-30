@@ -1,0 +1,113 @@
+//===== rAthena Script ======================================= 
+//= Kafras (Cities/Dungeons/Fields)
+//===== By: ================================================== 
+//= Joseph
+//===== Current Version: ===================================== 
+//= 1.1b
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: =========================================
+//= Argument settings for callfunc "F_Kafra":
+//=  arg(0): 0 - Default Kafra message
+//=          1 - Niflhiem Kafra message
+//=          2 - Guild Kafra message
+//=  arg(1): 1 - Disable teleport menu 
+//=  arg(2): 1 - Disable info menu
+//=  arg(3): Cost of Storage service
+//=  arg(4): Cost of Rent a Pushcart service
+//===== Additional Comments: ================================= 
+//= 0.x Previous Authors: 
+//=     - L0ne_W0lf, kobra_k88, Samuray22, Evera, Lupus
+//= 1.0 Merged and cleaned up Kafras. [Joseph]
+//= 1.1 Added Izlude RE coordinates. [Euphy]
+//= 1.1a Fixed Pre-RE Call and some leftovers. [Lemongrass]
+//= 1.1b Enabled saving in Izlude duplicates (RE). [Euphy]
+//============================================================ 
+
+// Aldebaran
+//===========================================================
+prontera.gat,147,162,6	script	Kafra Service	113,{
+	cutin "kafra_05",2;
+	mes "[Kafra Leilah]";
+	mes "Hm...?";
+	mes "Oh, Hola Que Deceas Hacer";
+	mes "Tenemos Un Maravilloso";
+	mes "Sistema De Save Y Storage";
+	mes "Empieso";
+	next;
+	switch(select("Save:Use Storage:Rent a Pushcart:Cancel")) {
+	case 1:
+		mes "[Kafra Leilah]";
+		mes "Your Respawn Point has";
+		mes "been saved here, inside";
+		mes "of the Kafra Corporation";
+		mes "Headquarters. Thank you.";
+		next;
+		savepoint "prontera.gat",156,174;
+		mes "[Kafra Leilah]";
+		mes "Please make use of";
+		mes "the Kafra Services that are";
+		mes "available throughout all of";
+		mes "Rune Midgard. Thank you for";
+		mes "visiting the Kafra Headquarters.";
+		close2;
+		break;
+	case 2:
+		if (Zeny < 0) {
+			mes "[Kafra Leilah]";
+			mes "Excuse me, but it";
+			mes "seems that you don't";
+			mes "have the 0 zeny to pay";
+			mes "the Storage access fee...";
+			close;
+		}
+		mes "[Kafra Leilah]";
+		mes "Although this facility is";
+		mes "exclusively intended for";
+		mes "the training of Kafra Employee";
+		mes "and administrative functions,";
+		mes "I'll access your Storage for you.";
+		next;
+		set Zeny, Zeny-0;
+		set RESRVPTS, RESRVPTS + (20/5);
+		mes "[Kafra Leilah]";
+		mes "In the future, please";
+		mes "ask the Kafra Employee on";
+		mes "duty if you wish to use";
+		mes "any of the Kafra Services.";
+		mes "Thank you for your patronage.";
+		callfunc("F_CheckKafCode");    //check your storage password, if set
+		close2;
+		openstorage;
+		break;
+	case 3:
+		mes "[Kafra Leilah]";
+		mes "My apologies, but I'm";
+		mes "not on duty. I'd assist you";
+		mes "if I could, but actually don't";
+		mes "have any available Pushcarts.";
+		mes "Why don't you ask another Kafra";
+		mes "Employee for assistance?";
+		next;
+		mes "[Kafra Leilah]";
+		mes "Kafra Employees are";
+		mes "stationed all over the";
+		mes "Rune Midgard continent,";
+		mes "and you should be able to find";
+		mes "plenty outside in Al De Baran.";
+		close2;
+		break;
+	case 4:
+		mes "[Kafra Leilah]";
+		mes "^666666*Whew...*^000000";
+		mes "Great, because I'm";
+		mes "actually on my break";
+		mes "right now. Choosing";
+		mes "''Cancel'' was a good";
+		mes "move on your part.";
+		close2;
+		break;
+	}
+	cutin "",255;
+	end;
+}

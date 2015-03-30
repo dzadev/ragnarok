@@ -1,0 +1,23 @@
+prontera.gat,147,159,5	script	Pvp Death Ro	417,{
+	//Configuracion
+set @nombre$, "^00CCFF[Axel]^000000";//Nombre NPC
+set @kill$, strcharinfo(0);
+//Empiezo del NPC
+mes @nombre$;
+mes "Hola ^0000FF"+strcharinfo(0)+"^000000.";
+mes "Estoy aca para llevarte a PvP";
+mes "¿Preparate";
+next;
+switch(select("PvP["+getmapusers("guild_vs3")+"]")){
+		//case 1:
+        	   warp "guild_vs3",0,0;
+			   end;
+               
+        case 2:
+        	   warp "guild_vs2",0,0;
+			   close;
+announce "El jugador ["+strcharinfo(0)+"] ha asesinado cruelmente a ["+rid2name(killedrid)+"]",bc_blue;
+}
+}
+guild_vs3	mapflag	pvp
+guild_vs3	mapflag	pvp_noguild

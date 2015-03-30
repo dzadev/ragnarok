@@ -1,0 +1,6 @@
+-	script	Bienvenida	-1,{
+
+OnPcLoginEvent:
+	if ( #Nuevo == 1 )
+		announce "Bienvenido(a) " + strcharinfo(0) + "  Death-Ro.",bc_self;
+	else {
